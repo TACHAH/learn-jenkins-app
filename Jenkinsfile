@@ -31,9 +31,8 @@ pipeline {
             
             steps {
                 sh '''
-                    npm install -g serve
-                    serve -s build
-                    npx playwright test
+                    test -f build/index.html
+                    npm test
                 '''
             }
         }
@@ -49,7 +48,7 @@ pipeline {
             steps {
                 sh '''
                     npm install -g serve
-                    serve -s build
+                    node_modules/.bin/serve -s build
                     npx playwright test
                 '''
             }
