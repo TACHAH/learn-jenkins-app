@@ -37,7 +37,6 @@ pipeline {
                 '''
             }
         }
-    }
 
         stage('E2E') {
              agent {
@@ -61,4 +60,4 @@ pipeline {
             junit 'test-results/junit.xml'
         }
     }
-
+}
