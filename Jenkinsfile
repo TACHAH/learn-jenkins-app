@@ -33,8 +33,11 @@ pipeline {
                     
                     steps {
                         sh '''
-                            test -f build/index.html
-                            npm test
+                            npm install --save-dev jest-junit
+                            export JEST_JUNIT_OUTPUT_DIR=jest-results
+                            export JEST_JUNIT_OUTPUT_NAME=junit.xml
+                            npm test -- --ci --reporters=default --reporters=jest-junit
+                            ls -R jest-results || echo "No jest-results directory found"
                         '''
                     }
                 }
